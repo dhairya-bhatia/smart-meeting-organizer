@@ -1,0 +1,61 @@
+.parentContainer {
+    padding: 16px;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.formContainer {
+    min-width: 500px
+}
+
+.formFields {
+    width: 100%;
+    display: block;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 8px;
+}
+
+.nextBtn {
+    margin-top: 16px;
+    background-color: #3399FF;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nextBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed
+}
+
+/* Select component Styles */
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "⌄";
+    font-size: 20px;
+    top: 4px;
+    right: 18px;
+    position: absolute;
+    pointer-events: none;
+}
