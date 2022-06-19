@@ -1,10 +1,15 @@
 // react hook form
+import { useCallback, useContext } from "react";
 import { useForm } from "react-hook-form";
+// react-router
 import { useNavigate } from "react-router-dom";
-// assets
-import meetingImage from "../../assets/meeting-img.webp";
+// context
+import { AppContext } from "../../context/AppContext";
+// Custom Form Helpers
 import CustomInput from "../../form/CustomInput";
 import CustomSelect from "../../form/CustomSelect";
+// assets
+import meetingImage from "../../assets/meeting-img.webp";
 // styles
 import "./styles.css";
 
@@ -20,27 +25,45 @@ const MeetingInfo = () => {
     formState: { errors }
   } = useForm();
 
+  // context
+  const { meetingData } = useContext(AppContext);
+
   // watchers
   const watchMeetingDate = watch("mdate");
   const watchEndTime = watch("etime");
+  const watchStartTime = watch("stime");
 
   // Prevents the user from selecting past time
   const getMinimumTime = () => {
     // checks if current date is selected
     if (watchMeetingDate === new Date().toISOString().split("T")[0]) {
-      return `${new Date().getHours()}:${new Date().getMinutes()}`;
+      // adding a leading 0 to current Hours and mins for correct comparison
+      //    as watch function returns the time with a leading 0
+      let currentHourWithLeadingZero = String(new Date().getHours()).padStart(
+        2,
+        0
+      );
+      let currentMinsWithLeadingZero = String(new Date().getMinutes()).padStart(
+        2,
+        0
+      );
+      return `${currentHourWithLeadingZero}:${currentMinsWithLeadingZero}`;
     }
     return "";
   };
 
-  const fetchBuildings = () => {
-    return ["Building 1", "Building 2", "Building 3"];
-  };
+  // maps the whole array of objects to fetch building's name and id
+  const fetchBuildings = useCallback(() => {
+    return meetingData.map((obj) => ({
+      id: obj.id,
+      name: obj.name
+    }));
+  }, [meetingData]);
 
   // Form Submit
   const onSubmit = (data) => {
     console.log(data);
-    navigate("room-selection");
+    navigate("room-selection", { state: data });
   };
 
   return (

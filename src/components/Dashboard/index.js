@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 import "./styles.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+
+  const appData = useContext(AppContext);
+
   return (
     <div className="root">
       <div className="boardPin" />

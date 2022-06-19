@@ -1,6 +1,7 @@
-const buildingsInfo = [
+const meetingsData = [
   {
     name: "Building 1",
+    id: 1,
     meetingRooms: [
       {
         name: "Punjab",
@@ -27,7 +28,8 @@ const buildingsInfo = [
     ]
   },
   {
-    name: "Building2",
+    name: "Building 2",
+    id: 2,
     meetingRooms: [
       {
         name: "Karnataka",
@@ -37,6 +39,7 @@ const buildingsInfo = [
   },
   {
     name: "Building 3",
+    id: 3,
     meetingRooms: [
       {
         name: "Haryana",
@@ -63,3 +66,5 @@ const buildingsInfo = [
     ]
   }
 ];
+
+export default meetingsData;

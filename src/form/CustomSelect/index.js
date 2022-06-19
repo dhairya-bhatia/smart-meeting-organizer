@@ -21,8 +21,8 @@ const CustomSelect = ({
       >
         <option value="">Please choose</option>
         {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+          <option key={option.id} value={option.id}>
+            {option.name}
           </option>
         ))}
       </select>
