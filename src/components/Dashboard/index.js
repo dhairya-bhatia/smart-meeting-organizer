@@ -1,6 +1,11 @@
+// react
 import { useContext } from "react";
+// react-router
 import { useNavigate } from "react-router-dom";
+// context
 import { AppContext } from "../../context/AppContext";
+// assets
+import meetingRoom from "../../assets/meeting-room.jpeg";
 import "./styles.css";
 
 const Dashboard = () => {
@@ -9,30 +14,44 @@ const Dashboard = () => {
   const { meetingData } = useContext(AppContext);
 
   return (
-    <div className="root">
-      <div className="boardPin" />
-      <div className="infoBlock">
+    <div className="root-container">
+      <div className="dashboard-container">
         <div>
-          <h1>Buildings: 4</h1>
+          <img
+            src={meetingRoom}
+            alt="meeting-room"
+            height="auto"
+            width="590px"
+          />
         </div>
-        <div>
-          <h1>Rooms</h1>
-          <h3>Total Rooms: 20</h3>
-          <h3>Rooms Available: 5</h3>
+        <div className="info-container">
+          <h2>Smart Meeting Organizer</h2>
+          <div className="stats-container">
+            <div className="stats">
+              <h3>Buildings</h3>
+              <h5>Total Buildings: 3</h5>
+            </div>
+            <div className="stats">
+              <h3>Rooms</h3>
+              <h5>Total Rooms: 3</h5>
+              <h5>Rooms Available: 1</h5>
+            </div>
+            <div className="stats">
+              <h3>Meetings</h3>
+              <h5>Meetings Today: 3</h5>
+            </div>
+          </div>
         </div>
-        <div>
-          <h1>Meeting Rooms</h1>
-          <h3>Total Rooms: 20</h3>
-          <h3>Rooms Available: 5</h3>
+        <div className="addMeetingBtn-container">
+          <button
+            type="button"
+            className="addMeetingBtn"
+            onClick={() => navigate("meeting-info")}
+          >
+            Add a Meeting
+          </button>
         </div>
       </div>
-      <button
-        type="button"
-        className="addMeetingBtn"
-        onClick={() => navigate("meeting-info")}
-      >
-        Add a Meeting
-      </button>
     </div>
   );
 };
