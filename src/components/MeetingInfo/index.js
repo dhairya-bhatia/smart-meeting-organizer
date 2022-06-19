@@ -9,7 +9,7 @@ import { AppContext } from "../../context/AppContext";
 import CustomInput from "../../form/CustomInput";
 import CustomSelect from "../../form/CustomSelect";
 // assets
-import meetingImage from "../../assets/meeting-img.webp";
+import meetingImage from "../../assets/meeting-image.jpeg";
 // styles
 import "./styles.css";
 
@@ -17,21 +17,24 @@ const MeetingInfo = () => {
   // for changing routes
   const navigate = useNavigate();
 
+  // context
+  const { meetingData, formData, handleFormData } = useContext(AppContext);
+
   // Form handling
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors }
-  } = useForm();
-
-  // context
-  const { meetingData } = useContext(AppContext);
+  } = useForm({
+    defaultValues: formData ? formData : ""
+  });
 
   // watchers
   const watchMeetingDate = watch("mdate");
   const watchEndTime = watch("etime");
-  const watchStartTime = watch("stime");
+
+  /*   functions   */
 
   // Prevents the user from selecting past time
   const getMinimumTime = () => {
@@ -63,7 +66,8 @@ const MeetingInfo = () => {
   // Form Submit
   const onSubmit = (data) => {
     console.log(data);
-    navigate("room-selection", { state: data });
+    handleFormData(data);
+    navigate("/room-selection");
   };
 
   return (
@@ -128,10 +132,12 @@ const MeetingInfo = () => {
             </button>
           </form>
         </div>
-        <img src={meetingImage} alt="Meeting" height="350px" width="350px" />
+        <div className="meeting-image">
+          <img src={meetingImage} alt="Meeting" width="500px" height="auto" />
+        </div>
       </div>
     </div>
   );
-};
+};;;;
 
 export default MeetingInfo;

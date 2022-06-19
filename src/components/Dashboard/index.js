@@ -6,7 +6,7 @@ import "./styles.css";
 const Dashboard = () => {
   const navigate = useNavigate();
 
-  const appData = useContext(AppContext);
+  const { meetingData } = useContext(AppContext);
 
   return (
     <div className="root">

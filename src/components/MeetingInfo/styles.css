@@ -41,6 +41,9 @@
     cursor: not-allowed
 }
 
+.meeting-image {
+    padding-bottom: 16px;
+}
 /* Select component Styles */
 select {
     -webkit-appearance: none;

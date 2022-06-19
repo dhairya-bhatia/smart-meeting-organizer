@@ -1,0 +1,28 @@
+.rooms-container {
+    background-color: #f2f2f2;
+    padding: 8px
+}
+
+.meeting-room {
+    /* border-radius: 10px; */
+    background-color: #f0f8ff;
+    width: 100%;
+    padding: 16px;
+    font-size: 20px;
+    margin: 20px 0px
+}
+
+.meeting-room:hover {
+    background-color: #cceeff;
+}
+
+.meeting-room:disabled {
+    background-color: red;
+}
+
+.rooms-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px
+}

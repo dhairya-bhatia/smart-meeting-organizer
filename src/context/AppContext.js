@@ -5,6 +5,7 @@ export const AppContext = createContext();
 export function AppContextProvider({ children }) {
   // The whole object containing meeting, rooms and building data
   const [meetingData, setMeetingData] = useState(initialMeetingData);
+  const [formData, setFormData] = useState();
   // Loader for whenever App is not ready to show the UI`
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,10 +21,13 @@ export function AppContextProvider({ children }) {
   }, []);
 
   const handleMeetingData = (data) => setMeetingData(data);
+  const handleFormData = (data) => setFormData(data);
 
   const value = {
     meetingData,
+    formData,
     handleMeetingData,
+    handleFormData,
     isAppLoading: isLoading
   };
 
