@@ -10,7 +10,7 @@ const meetingsData = [
         meetings: [
           {
             title: "Booked for Interview",
-            date: "19/06/2022",
+            date: "2022-06-20",
             startTime: "19:00",
             endTime: "20:00"
           }
@@ -23,9 +23,48 @@ const meetingsData = [
         meetings: [
           {
             title: "Team meeting",
-            date: "19/06/2022",
+            date: "2022-06-20",
             startTime: "15:00",
             endTime: "16:30"
+          }
+        ]
+      },
+      {
+        name: "Goa",
+        roomId: 100,
+        floor: 1,
+        meetings: [
+          {
+            title: "Team meeting",
+            date: "2022-06-20",
+            startTime: "19:00",
+            endTime: "22:30"
+          }
+        ]
+      },
+      {
+        name: "Delhi",
+        roomId: 101,
+        floor: 1,
+        meetings: [
+          {
+            title: "Team meeting2",
+            date: "2022-06-20",
+            startTime: "19:00",
+            endTime: "22:30"
+          }
+        ]
+      },
+      {
+        name: "Himachal",
+        roomId: 102,
+        floor: 1,
+        meetings: [
+          {
+            title: "Team meeting",
+            date: "2022-06-20",
+            startTime: "19:00",
+            endTime: "22:30"
           }
         ]
       }
@@ -54,7 +93,7 @@ const meetingsData = [
         meetings: [
           {
             title: "Conference",
-            date: "13/06/2022",
+            date: "2022-06-20",
             startTime: "19:00",
             endTime: "20:00"
           }
@@ -67,7 +106,7 @@ const meetingsData = [
         meetings: [
           {
             title: "Team meeting",
-            date: "13/06/2022",
+            date: "2022-06-20",
             startTime: "19:00",
             endTime: "20:00"
           }

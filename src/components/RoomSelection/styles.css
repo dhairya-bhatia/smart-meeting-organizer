@@ -1,28 +1,62 @@
-.rooms-container {
-    background-color: #f2f2f2;
-    padding: 8px
-}
+ .selection-block {
+     min-height: 700px;
+     border: 1px solid black;
+     border-radius: 10px;
+     width: 650px;
+     padding: 30px;
+     margin: auto;
+     background-color: #F4F7FA;
+     display: flex;
+     flex-direction: column;
+     gap: 20px
+ }
 
-.meeting-room {
-    /* border-radius: 10px; */
-    background-color: #f0f8ff;
-    width: 100%;
-    padding: 16px;
-    font-size: 20px;
-    margin: 20px 0px
-}
+ .rooms-container {
+     padding: 32px;
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 40px;
+ }
 
-.meeting-room:hover {
-    background-color: #cceeff;
-}
+ .parentRoomContainer {
+     background-color: #d1e0e0;
+     min-height: 100vh;
+     display: block;
+     padding: 80px 0px 50px 0px;
+ }
 
-.meeting-room:disabled {
-    background-color: red;
-}
+ .rooms-info {
+     background-color: #d1e0e0;
+     text-align: center;
+     padding: 16px;
+     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+     border-radius: 10px;
+     padding: 16px;
+     height: 200px;
+     min-width: 200px
+ }
 
-.rooms-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px
-}
+ .rooms-info:hover {
+     background-color: #e6f9ff;
+ }
+
+ .data-container {
+     margin-top: 20px;
+ }
+
+ .selectRoomBtn {
+
+     width: 100px;
+     margin-top: 32px;
+     padding: 12px 10px;
+     color: #fff;
+     background-color: #3399FF;
+     border-radius: 4px;
+     border: none;
+     cursor: pointer;
+ }
+
+ .selectRoomBtn:disabled {
+     opacity: 0.3;
+     cursor: not-allowed
+ }

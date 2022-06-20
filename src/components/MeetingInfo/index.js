@@ -57,7 +57,7 @@ const MeetingInfo = () => {
 
   // maps the whole array of objects to fetch building's name and id
   const fetchBuildings = useCallback(() => {
-    return meetingData.map((obj) => ({
+    return meetingData?.map((obj) => ({
       id: obj.id,
       name: obj.name
     }));
@@ -65,7 +65,6 @@ const MeetingInfo = () => {
 
   // Form Submit
   const onSubmit = (data) => {
-    console.log(data);
     handleFormData(data);
     navigate("/room-selection");
   };

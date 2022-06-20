@@ -29,7 +29,7 @@ const Dashboard = () => {
           <div className="stats-container">
             <div className="stats">
               <h3>Buildings</h3>
-              <h5>Total Buildings: 3</h5>
+              <h5>Total Buildings: {meetingData.length}</h5>
             </div>
             <div className="stats">
               <h3>Rooms</h3>
