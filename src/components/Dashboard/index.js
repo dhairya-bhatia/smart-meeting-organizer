@@ -1,5 +1,5 @@
 // react
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 // react-router
 import { useNavigate } from "react-router-dom";
 // context
@@ -12,6 +12,30 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const { meetingData } = useContext(AppContext);
+
+  // returns total rooms in all the buildings
+  const totalRooms = useMemo(() => {
+    return meetingData.reduce((total, currentVal) => {
+      return (total += currentVal.meetingRooms.length);
+    }, 0);
+  }, [meetingData]);
+
+  // returns total meetings scheduled for today
+  const meetingsToday = useMemo(() => {
+    let totalMeetingsToday = 0;
+    meetingData.forEach((element) => {
+      if (element.meetingRooms.length) {
+        element.meetingRooms.forEach((obj) => {
+          // adding the length of items array that passed the criteria to "totalMeetingsToday"
+          totalMeetingsToday += obj.meetings.filter((meetingObj) => {
+            return meetingObj.date === new Date().toISOString().split("T")[0];
+          }).length;
+        });
+      }
+    });
+    return totalMeetingsToday;
+    // })
+  }, [meetingData]);
 
   return (
     <div className="root-container">
@@ -33,12 +57,11 @@ const Dashboard = () => {
             </div>
             <div className="stats">
               <h3>Rooms</h3>
-              <h5>Total Rooms: 3</h5>
-              <h5>Rooms Available: 1</h5>
+              <h5>Total Rooms: {totalRooms}</h5>
             </div>
             <div className="stats">
               <h3>Meetings</h3>
-              <h5>Meetings Today: 3</h5>
+              <h5>Meetings Today: {meetingsToday}</h5>
             </div>
           </div>
         </div>

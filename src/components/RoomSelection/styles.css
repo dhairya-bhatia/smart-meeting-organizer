@@ -37,7 +37,7 @@
  }
 
  .rooms-info:hover {
-     background-color: #e6f9ff;
+     background-color: #ccf3ff;
  }
 
  .data-container {
@@ -58,5 +58,6 @@
 
  .selectRoomBtn:disabled {
      opacity: 0.3;
-     cursor: not-allowed
+     cursor: not-allowed;
+     background-color: #3399FF;
  }

@@ -106,7 +106,7 @@ const meetingsData = [
         meetings: [
           {
             title: "Team meeting",
-            date: "2022-06-20",
+            date: "2022-06-22",
             startTime: "19:00",
             endTime: "20:00"
           }

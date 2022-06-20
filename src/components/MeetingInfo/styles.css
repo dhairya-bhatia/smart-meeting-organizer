@@ -36,11 +36,6 @@
     cursor: pointer;
 }
 
-.nextBtn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed
-}
-
 .meeting-image {
     padding-bottom: 16px;
 }
