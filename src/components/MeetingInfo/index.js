@@ -1,5 +1,5 @@
 // react hook form
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 // react-router
 import { useNavigate } from "react-router-dom";
@@ -32,7 +32,6 @@ const MeetingInfo = () => {
 
   // watchers
   const watchMeetingDate = watch("mdate");
-  const watchEndTime = watch("etime");
 
   /*   functions   */
 
@@ -56,13 +55,10 @@ const MeetingInfo = () => {
   };
 
   // maps the whole array of objects to fetch building's name and id
-  const fetchBuildings = useCallback(() => {
-    return meetingData?.map((obj) => ({
-      id: obj.id,
-      name: obj.name
-    }));
-  }, [meetingData]);
-
+  const buildingsData = meetingData?.map((obj) => ({
+    id: obj.id,
+    name: obj.name
+  }));
   // Form Submit
   const onSubmit = (data) => {
     handleFormData(data);
@@ -101,7 +97,6 @@ const MeetingInfo = () => {
               id="stime"
               register={register}
               min={getMinimumTime()}
-              max={watchEndTime}
               className="formFields"
               errors={errors}
               isRequired
@@ -122,7 +117,7 @@ const MeetingInfo = () => {
                 register={register}
                 className="formFields"
                 errors={errors}
-                options={fetchBuildings()}
+                options={buildingsData}
                 isRequired
               />
             </div>

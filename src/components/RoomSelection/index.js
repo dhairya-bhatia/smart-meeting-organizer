@@ -14,6 +14,7 @@ const RoomSelection = () => {
   // state
   const [buildingData, setBuildingData] = useState();
 
+  // checks if room has a meeting scheduled b/w same time
   const isRoomSelectionDisabled = useCallback(
     (roomId) => {
       const selectedRoom = buildingData?.meetingRooms.find(
@@ -22,6 +23,7 @@ const RoomSelection = () => {
       return (
         selectedRoom?.meetings.find(
           (meetingObj) =>
+            // meetings should be of same date
             formData?.mdate === meetingObj?.date &&
             checkIfMeetingsClash(
               meetingObj.startTime,
@@ -40,6 +42,7 @@ const RoomSelection = () => {
     ]
   );
 
+  // Adds meeting to the meetingsData object
   const addMeetingData = (roomInfo) => {
     let tempMeetingDataObj = meetingData;
     tempMeetingDataObj
@@ -62,6 +65,12 @@ const RoomSelection = () => {
     });
     setBuildingData(buildingInfo);
   }, [formData?.building, meetingData]);
+
+  useEffect(() => {
+    if (formData === null) {
+      navigate("/", { replace: true });
+    }
+  }, [formData, navigate]);
 
   return (
     <div className="parentRoomContainer">

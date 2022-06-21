@@ -18,10 +18,7 @@ export const checkIfMeetingsClash = (
     );
   }
   // Scheduled meeting time passes midnight
-  else if (
-    startTime > endTime ||
-    currentStartMeetingTime > currentEndMeetingTime
-  ) {
+  else if (startTime > endTime) {
     return (
       // current meeting's start time lies b/w scheduled meeting
       currentStartMeetingTime >= startTime ||
@@ -29,6 +26,17 @@ export const checkIfMeetingsClash = (
       // current meeting's end time lies b/w scheduled meeting
       currentEndMeetingTime > startTime ||
       currentEndMeetingTime <= endTime
+    );
+  }
+  // Current meeting time passes midnight
+  else if (currentStartMeetingTime > currentEndMeetingTime) {
+    return (
+      // current meeting's start time lies b/w scheduled meeting
+      startTime >= currentStartMeetingTime ||
+      startTime < currentEndMeetingTime ||
+      // current meeting's end time lies b/w scheduled meeting
+      endTime > currentStartMeetingTime ||
+      endTime <= currentEndMeetingTime
     );
   } else {
     return (

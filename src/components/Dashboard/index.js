@@ -12,7 +12,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const { meetingData } = useContext(AppContext);
-
   // returns total rooms in all the buildings
   const totalRooms = useMemo(() => {
     return meetingData.reduce((total, currentVal) => {
