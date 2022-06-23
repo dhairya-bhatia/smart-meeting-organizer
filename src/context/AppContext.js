@@ -1,5 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import initialMeetingData from "../data/dummyData";
+
 export const AppContext = createContext();
 
 export function AppContextProvider({ children }) {
@@ -9,6 +10,12 @@ export function AppContextProvider({ children }) {
 
   const handleMeetingData = (data) => setMeetingData(data);
   const handleFormData = (data) => setFormData(data);
+
+  useEffect(() => {
+    if (localStorage.getItem("meetingData")) {
+      setMeetingData(JSON.parse(localStorage.getItem("meetingData")));
+    }
+  }, []);
 
   const value = {
     meetingData,

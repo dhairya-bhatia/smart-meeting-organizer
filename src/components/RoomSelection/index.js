@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import { checkIfMeetingsClash } from "../../utils";
@@ -15,32 +15,24 @@ const RoomSelection = () => {
   const [buildingData, setBuildingData] = useState();
 
   // checks if room has a meeting scheduled b/w same time
-  const isRoomSelectionDisabled = useCallback(
-    (roomId) => {
-      const selectedRoom = buildingData?.meetingRooms.find(
-        (room) => room.roomId === roomId
-      );
-      return (
-        selectedRoom?.meetings.find(
-          (meetingObj) =>
-            // meetings should be of same date
-            formData?.mdate === meetingObj?.date &&
-            checkIfMeetingsClash(
-              meetingObj.startTime,
-              meetingObj.endTime,
-              formData?.stime,
-              formData?.etime
-            )
-        ) !== undefined
-      );
-    },
-    [
-      buildingData?.meetingRooms,
-      formData?.etime,
-      formData?.mdate,
-      formData?.stime
-    ]
-  );
+  const isRoomSelectionDisabled = (roomId) => {
+    const selectedRoom = buildingData?.meetingRooms.find(
+      (room) => room.roomId === roomId
+    );
+    return (
+      selectedRoom?.meetings.find(
+        (meetingObj) =>
+          // meetings should be of same date
+          formData?.mdate === meetingObj?.date &&
+          checkIfMeetingsClash(
+            meetingObj.startTime,
+            meetingObj.endTime,
+            formData?.stime,
+            formData?.etime
+          )
+      ) !== undefined
+    );
+  };
 
   // Adds meeting to the meetingsData object
   const addMeetingData = (roomInfo) => {
@@ -55,6 +47,7 @@ const RoomSelection = () => {
         endTime: formData?.etime
       });
     handleMeetingData(tempMeetingDataObj);
+    localStorage.setItem("meetingData", JSON.stringify(tempMeetingDataObj));
     handleFormData(null);
     navigate("/");
   };
